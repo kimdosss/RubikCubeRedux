@@ -1,0 +1,75 @@
+
+@import "../Cube/color";
+@font-face {
+    font-family: "customfont";
+    src: url("./font/ComicSansMS3.ttf") format("opentype");
+}
+body{
+  height: 100%;
+  background: #333;
+  width: 100%;
+}
+
+.bg-cube{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+    top: 0;
+    left: 0;
+	background: #333;
+	z-index: -10;
+}
+
+
+.main-wrapper{
+	font: 400 15px/1.8 "customfont", cursive, sans-serif;
+    width: 320px;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    position: absolute;
+	top:15%;
+	bottom: 0;
+	left: 0;
+	right: 0;	
+	margin: auto;
+}
+
+.main-title{
+	color: #D2D2D2;
+	span{
+		padding: 5px;
+	}
+	.main-title-color-1{
+		color: $color-5;
+	}
+	.main-title-color-2{
+		color: $color-2;
+	}
+	.main-title-color-3{
+		color: $color-3;
+	}
+	.main-title-color-4{
+		color: $color-4;
+	}
+	.main-title-color-5{
+		color: $color-1;
+	}
+	.main-title-color-6{
+		color: $color-6;
+	}
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.notice{
+	padding: 10px;
+	
+}
+

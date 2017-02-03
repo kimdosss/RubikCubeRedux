@@ -1,0 +1,218 @@
+@import "color";
+
+body{
+  height: 100%;
+  background: #333;
+  width: 100%;
+}
+
+
+.cube-wrap{
+	position: relative;
+	perspective: 1500px;
+    -webkit-perspective: 1500px;
+    -moz-perspective: 1500px;
+	perspective-origin: 50% 100px;
+	margin-top: 200px;
+	margin-left: 200px;
+	width: 300px;
+	height: 300px;
+}
+
+.cube-container{
+	position: relative;	
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	width: 200px;	
+
+	div{
+		position: absolute;
+
+
+	}
+}
+
+@keyframes spin {
+	from { transform: rotateY(0); }
+	to { transform: rotateY(360deg); }
+}
+
+.cube-container {
+	/*animation: spin 5s infinite linear;*/
+}
+
+.face0 div{
+	background: $color-1
+	
+}
+
+
+.face1 div{
+	background: $color-2
+}
+
+.face2 div{
+	background: $color-3
+}
+
+.face3 div{
+	background: $color-4
+}
+
+.face4 div{
+	background: $color-5
+}
+
+.face5 div{
+	background: $color-6
+}
+
+$animation_time: 0.4s;
+
+@mixin spin_animation($keyframe, $time) {
+
+	animation: $keyframe $time ease-in-out forwards;
+	-webkit-animation: $keyframe $time  forwards;
+	-moz-animation: $keyframe $time ease-in-out forwards;
+	-o-animation: $keyframe $time ease-in-out forwards;
+
+}
+
+
+
+
+@mixin keyframes_test($animationName, $frame1, $frame2) {
+	@-webkit-keyframes #{$animationName} {
+		from { -webkit-transform: $frame1; }
+		to { -webkit-transform: $frame2; }
+	}
+	@-moz-keyframes #{$animationName} {
+		from { -moz-transform: $frame1; }
+		to { -moz-transform: $frame2; }
+	}
+	@-o-keyframes #{$animationName} {
+		from { -o-transform: $frame1; }
+		to { -o-transform: $frame2; }
+	}
+	@keyframes #{$animationName} {
+		from { transform: $frame1; }
+		to { transform: $frame2; }
+	}
+}
+
+/* y axis */
+
+@include keyframes_test(spin_yn_s, rotateY(90deg), rotateY(0deg));
+
+@include keyframes_test(spin_yn_t, rotateZ(-90deg), rotateZ(0deg));
+
+@include keyframes_test(spin_yp_s, rotateY(-90deg), rotateY(0deg));
+
+@include keyframes_test(spin_yp_t, rotateZ(90deg), rotateZ(0deg));
+
+
+/* x axis */
+
+@include keyframes_test(spin_xp_s, rotateX(90deg), rotateX(0deg));
+
+@include keyframes_test(spin_xp_t, rotateZ(90deg), rotateZ(0deg));
+
+@include keyframes_test(spin_xn_s, rotateX(-90deg), rotateX(0deg));
+
+@include keyframes_test(spin_xn_t, rotateZ(-90deg),  rotateZ(0deg));
+
+/* z axis */
+@include keyframes_test(spin_zp_s_0, rotateX(-90deg),  rotateX(0deg));
+
+@include keyframes_test(spin_zp_s_1, rotateY(90deg), rotateY(0deg));
+
+@include keyframes_test(spin_zp_t, rotateZ(90deg), rotateZ(0deg));
+
+@include keyframes_test(spin_zn_s_0, rotateX(90deg), rotateX(0deg));
+
+@include keyframes_test(spin_zn_s_1, rotateY(-90deg), rotateY(0deg));
+
+@include keyframes_test(spin_zn_t, rotateZ(-90deg), rotateZ(0deg));
+
+
+.spin_effect_yp_s {
+	@include spin_animation(spin_yp_s, $animation_time)
+}
+
+.spin_effect_yp_t {		
+	@include spin_animation(spin_yp_t, $animation_time)
+}
+
+.spin_effect_yn_s {
+	@include spin_animation(spin_yn_s, $animation_time)
+}
+
+.spin_effect_yn_t {		
+	@include spin_animation(spin_yn_t, $animation_time)
+}
+
+.spin_effect_xp_s {
+	@include spin_animation(spin_xp_s, $animation_time)
+}
+
+.spin_effect_xp_t {
+	@include spin_animation(spin_xp_t, $animation_time)
+}
+
+.spin_effect_xn_s {
+	@include spin_animation(spin_xn_s, $animation_time)
+}
+
+.spin_effect_xn_t {
+	@include spin_animation(spin_xn_t, $animation_time)
+}
+
+.spin_effect_zp_s_0 {
+	@include spin_animation(spin_zp_s_0, $animation_time)
+}
+
+.spin_effect_zp_s_1 {
+	@include spin_animation(spin_zp_s_1, $animation_time)
+}
+
+.spin_effect_zp_t {
+	@include spin_animation(spin_zp_t, $animation_time)
+}
+
+.spin_effect_zn_s_0 {
+	@include spin_animation(spin_zn_s_0, $animation_time)
+}
+
+.spin_effect_zn_s_1 {
+	@include spin_animation(spin_zn_s_1, $animation_time)
+}
+
+.spin_effect_zn_t {
+	@include spin_animation(spin_zn_t, $animation_time)
+}
+
+
+
+.bg-cube{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: #333;
+	z-index: -10;
+}
+
+.CubeDemo{
+	position: absolute;
+	perspective: 800px;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    margin-top: 120px;
+    margin-left:20px;
+    div{
+    	margin-top: 0;
+    	margin-left: 0;
+    }
+}
+
+
