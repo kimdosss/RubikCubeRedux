@@ -1,6 +1,5 @@
-import Cube from './Cube';
+import Cube from './Cube'
 
 // Sync route definition
-export default  Cube
-
+export default Cube
 

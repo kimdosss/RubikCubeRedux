@@ -1,41 +1,39 @@
-function swipeGesture(element,handle){
-	['mousedown','touchstart'].forEach(event => element.addEventListener(event, onDragRotateStart));
-	let that = this;
-	function onDragRotateStart(e) {            	
-	    e.preventDefault();
-	    let startX,startY;
+function swipeGesture (element, handle) {
+  ['mousedown', 'touchstart'].forEach(event => element.addEventListener(event, onDragRotateStart))
+  let that = this
+  function onDragRotateStart (e) {
+	    e.preventDefault()
+	    let startX, startY
 	    if (e.type == 'touchstart') {
 	    	startX = e.changedTouches[0].pageX,
-            startY = e.changedTouches[0].pageY;	    	
+            startY = e.changedTouches[0].pageY
 	    } else if (e.type == 'mousedown') {
-			startX = e.pageX;
-			startY = e.pageY; 
+      startX = e.pageX
+      startY = e.pageY
 	    } else {
-	    	throw('Drag event error.')
+	    	throw ('Drag event error.')
 	    }
 
-	    
-		['mousemove', 'touchmove'].forEach(event => element.addEventListener(event, onDragRotateMove));
+    ['mousemove', 'touchmove'].forEach(event => element.addEventListener(event, onDragRotateMove));
 
-		['mouseup','touchend','touchcancel','mouseout'].forEach(event => element.addEventListener(event, onDragRotateEnd));
-	   
+    ['mouseup', 'touchend', 'touchcancel', 'mouseout'].forEach(event => element.addEventListener(event, onDragRotateEnd))
 
-		function onDragRotateMove(e) {	 	
-			let direction,coordsX,coordsY,x,y;
-				//e = event.nativeEvent;
-		        e.preventDefault();
+    function onDragRotateMove (e) {
+      let direction, coordsX, coordsY, x, y
+				// e = event.nativeEvent;
+		        e.preventDefault()
 	        if (e.type == 'touchmove') {
-	        	coordsX = e.changedTouches[0].pageX;
-	        	coordsY = e.changedTouches[0].pageY;
-	        }else if (e.type == 'mousemove') {
-			    coordsX = e.pageX;
-		        coordsY = e.pageY;               	
+	        	coordsX = e.changedTouches[0].pageX
+	        	coordsY = e.changedTouches[0].pageY
+	        } else if (e.type == 'mousemove') {
+			    coordsX = e.pageX
+		        coordsY = e.pageY
 	        } else {
-	        	throw('drag event error')
-	        }  
+	        	throw ('drag event error')
+	        }
 
-		    y = (coordsY - startY);
-	        x = (coordsX - startX);
+		    y = (coordsY - startY)
+	        x = (coordsX - startX)
 
 	        if (Math.abs(x) > 20 || Math.abs(y) > 20) {
 	        	if (Math.abs(x) > Math.abs(y)) {
@@ -45,29 +43,24 @@ function swipeGesture(element,handle){
 	        			direction = 'left'
 	        		}
 	        	} else {
-					if (y < 0) {
+          if (y < 0) {
 	        			direction = 'up'
 	        		} else {
 	        			direction = 'down'
 	        		}
 	        	}
 
-	
-	        	
-	        	handle(direction);
-	        	onDragRotateEnd(e);
+	        	handle(direction)
+	        	onDragRotateEnd(e)
 	        }
+    }
 
-		}
+    function onDragRotateEnd (e) {
+      ['mousemove', 'touchmove'].forEach(event => element.removeEventListener(event, onDragRotateMove));
 
-		function onDragRotateEnd(e){
-			['mousemove', 'touchmove'].forEach(event => element.removeEventListener(event, onDragRotateMove));
-
-			['mouseup','touchend','touchcancel','mouseout'].forEach(event => element.removeEventListener(event, onDragRotateEnd));
-		}
-
-	}
-
+      ['mouseup', 'touchend', 'touchcancel', 'mouseout'].forEach(event => element.removeEventListener(event, onDragRotateEnd))
+    }
+  }
 }
 
-export default swipeGesture;
+export default swipeGesture

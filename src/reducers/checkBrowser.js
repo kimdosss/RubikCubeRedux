@@ -1,5 +1,5 @@
 
-function checkBrowser(state = [],action){
+function checkBrowser (state = [], action) {
 /*
 	var isChromium = window.chrome,
 	    winNav = window.navigator,
@@ -15,13 +15,13 @@ function checkBrowser(state = [],action){
 	} else if(isChromium !== null && isChromium !== undefined && vendorName === "Google Inc." && isOpera == false && isIEedge == false) {
 	   // is Google Chrome
 	   isChrome=true
-	} else { 
+	} else {
 	   // not Google Chrome
 	  isChrome=false
-	}*/
+	} */
 
-	return state;
+  return state
 }
 
-export default checkBrowser;
+export default checkBrowser
 
